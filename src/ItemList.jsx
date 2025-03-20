@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import './ItemList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import table from './assets/table.svg';
 import chair from './assets/chair.svg';
@@ -64,11 +65,11 @@ const ItemList = () => {
               />
               {item.name}
             </label>
-            <img src={item.image} alt={item.name} style={{ width: '100px', height: '100px' }} />
+            <img src={item.image} alt={item.name} />
           </div>
         ))}
       </div>
-      <button onClick={addCheckedItems}>Добавить</button>
+      <button onClick={addCheckedItems} className='button'>Добавить элемент на доску</button>
     </div>
   );
 };

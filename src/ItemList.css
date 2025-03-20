@@ -1,0 +1,10 @@
+.item-list{
+  margin: 20px 0 30px 0;
+}
+.item-card{
+  display: flex;
+  justify-content: space-between;
+}
+.item-card:not(:last-child){
+  margin-bottom: 20px;
+}

@@ -1,0 +1,21 @@
+.wrapper{
+  text-align: center;
+  border:  1px solid black ;
+  margin:  10px ;
+  font-size:  9px ;
+  min-height:30px;
+}
+
+.wrapper.wrapper_table{
+
+  max-width:  50px ;
+}
+.wrapper.wrapper_chair{
+ 
+  max-width:  20px ;
+}
+.wrapper.wrapper_partition{
+
+  max-width:  100px ;
+
+}

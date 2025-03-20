@@ -9,6 +9,7 @@ const App = () => {
   const items = useSelector((state) => state.items);
   const dispatch = useDispatch();
   const [itemPositions, setItemPositions] = useState({});
+  const [fileName, setFileName] = useState('Файл не выбран');
 
   const handleDragStop = (id, data) => {
     setItemPositions(prev => ({
@@ -18,9 +19,8 @@ const App = () => {
   };
 
   const savePositionsToFile = () => {
-    const arrPositions = items.map((item) => { return item.position });
-
-    const data = JSON.stringify({ ...arrPositions }, null, 2);
+    console.log('itemPositions', itemPositions);
+    const data = JSON.stringify(itemPositions, null, 2);
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -39,16 +39,16 @@ const App = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    setFileName(file ? file.name : 'Файл не выбран');
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const content = e.target.result;
         try {
           const parsedPositions = JSON.parse(content);
-          setItemPositions(parsedPositions); // Обновляем координаты
-          // Здесь произойдет перерисовка компонента, так как состояние обновляется
+          setItemPositions(parsedPositions);
         } catch (error) {
-          alert("Ошибка при загрузке файла: некорректный формат JSON");
+          alert(error);
         }
       };
       reader.readAsText(file);
@@ -58,15 +58,22 @@ const App = () => {
   return (
     <div>
       <ItemList />
-      <button onClick={savePositionsInStore} style={{ marginBottom: '20px' }}>
-        Save Positions
+      <button onClick={savePositionsInStore} className='button' style={{ marginBottom: '20px' }}>
+        Сохранить позицию
       </button>
-      <input
-        type="file"
-        accept=".json"
-        onChange={handleFileChange}
-        style={{ marginBottom: '20px' }}
-      />
+      <div className="file-input-container">
+        <label htmlFor="file" className="file-input-label">
+          <p>Загрузить позицию</p>
+        </label>
+          <input
+            type="file"
+            id="file"
+            className="file-input"
+            accept=".json"
+            onChange={handleFileChange}
+          />
+          <span className="file-name">{fileName}</span> {/* Отображаем имя файла */}
+      </div>
       <div
         style={{
           border: '1px dashed gray',
@@ -82,8 +89,8 @@ const App = () => {
           return (
             <DraggableItem
               key={item.id}
-              item={{ ...item, position }} 
-              position= {{...item.position}}
+              item={{ ...item, position }}
+              position={{ ...item.position }}
               onStop={handleDragStop}
             />
           );

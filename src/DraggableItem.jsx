@@ -1,4 +1,4 @@
-
+import './DraggableItem.css';
 import React from 'react';
 import Draggable from 'react-draggable';
 
@@ -7,8 +7,6 @@ class DraggableItem extends React.Component {
   draggableRef = React.createRef();
   constructor(props) {
     super(props);
-
-console.log(props);
     this.state = {
       position: { x: props.item.position.x, y: props.item.position.y } // Инициализируем начальную позицию
     };
@@ -40,16 +38,11 @@ console.log(props);
       >
         <div
           ref={this.draggableRef}
-          style={{
-            textAlign: 'center',
-            border: '1px solid black',
-            margin: '10px',
-            fontSize: '14px',
-            backgroundColor: 'lightblue',
-            maxWidth: '50px',
-          }}
+          className={this.props.item.name==="Стол"?'wrapper wrapper_table':this.props.item.name==="Стул"?'wrapper wrapper_chair':'wrapper wrapper_partition'}
         >
-          {this.props.item.image}
+          {this.props.item.name
+          }
+          <img src={this.props.item.image}/>
         </div>
       </Draggable>
     );
