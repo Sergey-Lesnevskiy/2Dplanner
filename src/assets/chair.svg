@@ -1,0 +1,7 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+  <!-- Сиденье стула -->
+  <rect x="0" y="10" width="20" height="10" fill="saddlebrown" />
+  <!-- Ножки стула -->
+  <rect x="2" y="20" width="3" height="5" fill="saddlebrown" />
+  <rect x="15" y="20" width="3" height="5" fill="saddlebrown" />
+</svg>

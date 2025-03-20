@@ -1,0 +1,8 @@
+<svg width="50" height="25" xmlns="http://www.w3.org/2000/svg">
+  <!-- Стол -->
+  <rect x="0" y="10" width="50" height="15" fill="saddlebrown" />
+  <rect x="0" y="0" width="50" height="10" fill="sienna" />
+  <!-- Ножки стола -->
+  <rect x="5" y="25" width="5" height="5" fill="saddlebrown" />
+  <rect x="40" y="25" width="5" height="5" fill="saddlebrown" />
+</svg>

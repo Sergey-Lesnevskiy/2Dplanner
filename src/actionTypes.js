@@ -1,0 +1,3 @@
+export const TOGGLE_CHECKBOX = 'TOGGLE_CHECKBOX';
+export const ADD_ITEMS = 'ADD_ITEMS';
+export const SAVE_ITEM_POSITIONS = 'SAVE_ITEM_POSITIONS';
